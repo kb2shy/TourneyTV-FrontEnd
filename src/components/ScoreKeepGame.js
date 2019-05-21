@@ -4,7 +4,7 @@ import { Card, Icon, Image, Button } from 'semantic-ui-react';
 export default class ScoreKeepGame extends Component {
 
   render() {
-    const { score, addScore, image, team, setTeam } = this.props
+    const { score, updateScore, team, image } = this.props
     return(
       <Card centered>
         <Image src={image}
@@ -21,7 +21,7 @@ export default class ScoreKeepGame extends Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Button onClick={addScore}>
+          <Button onClick={(team) => updateScore(this.props.team)}>
             Add Point
           </Button>
         </Card.Content>

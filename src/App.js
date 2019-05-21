@@ -16,7 +16,13 @@ class App extends Component {
     super()
     this.state = {
       games: [],
-      game: '',
+      game: {
+        id: '',
+        courtnum: '',
+        team1score: '',
+        team2score: '',
+        teams: {},
+      }
     }
   }
 
@@ -35,27 +41,48 @@ class App extends Component {
   }
 
   handleReceiveData = (data) => {
-    if (data !==  this.state ) {
-      this.setState({ games: data })
+    console.log(data);
+    debugger;
+    if (data !==  this.state.games[data.id - 1] ) {
+      console.log(`data does not equal content in this.state.games[${data.id}]`)
+      let games = this.state.games;
+      games[data.id - 1] = data;
+      this.setState(games)
     }
   }
 
-  updateGames = (game) => {
-    let games = { games: []}
-    this.setState({ })
-    let data = {id: 1, team1score: this.state.team1score + 1, team2score: this.state.team2score};
-    this.sub.send(data);
+  updateScore = (team) => {
+    debugger;
+    let updateGame = this.state.game;
+    if (team.name === this.state.game.teams[0].name) {
+      updateGame["team1score"] = this.state.game.team1score + 1;
+    } else {
+      updateGame["team2score"] = this.state.game.team2score + 1;
+    }
+    this.setState({ updateGame });
+    this.sub.send(updateGame);
   }
 
   // addScoreTeam2 = () => {
-  //   this.setState({ team2score: this.state.team2score + 1})
-  //   let data = {id: 1, team1score: this.state.team1score, team2score: this.state.team2score + 1};
-  //   this.sub.send(data);
+  //   let updateGame = this.state.game;
+  //   updateGame["team2score"] = this.state.game.team2score + 1;
+  //   this.setState({ updateGame })
+  //   this.sub.send(updateGame);
   // }
 
   // pass this prop through SingleGameContainer
   setSingleGame = (game) => {
-    this.setState( { game })
+    if (game.team1score === null || game.team2score === null) {
+      this.setState({ game: {
+        id: game.id,
+        courtnum: game.courtnum,
+        team1score: 0,
+        team2score: 0,
+        teams: game.teams,
+      }})
+    } else {
+      this.setState({game})
+    }
   }
 
   render() {
@@ -63,7 +90,7 @@ class App extends Component {
       <Container>
         <MenuContainer />
         <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>
-        {this.state.game ? <ScoreKeepGameContainer game={this.state.game}/> : null}
+        {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
       </Container>
     )
   }
