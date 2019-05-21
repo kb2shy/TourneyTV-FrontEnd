@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Segment } from 'semantic-ui-react';
 
-import CGCard from '../components/CGCard'
+import GameCard from '../components/GameCard'
 
 export default class GamesContainer extends Component {
 
@@ -18,11 +18,11 @@ export default class GamesContainer extends Component {
   }
 
   render(){
-    const { games } = this.props;
+    const { games, setSingleGame } = this.props;
     return(
       <Segment placeholder>
         <Card.Group itemsPerRow={3}>
-          {games.map((game) => (<CGCard raised game={game}/>))}
+          {games.map((game) => (<GameCard game={game} setSingleGame={setSingleGame}/>))}
         </Card.Group>
       </Segment>
     )

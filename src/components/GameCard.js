@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Card, Grid, Divider } from 'semantic-ui-react';
+import { Card, Grid, Divider, Button } from 'semantic-ui-react';
 
-export default class CurrentGameCard extends Component {
+export default class GameCard extends Component {
 
 
   render() {
-    console.log(this.props.game)
     const { id, courtnum, team1score, team2score, teams} = this.props.game
     return (
       <Card raised>
         <Card.Content textAlign='center'>
           <Card.Header>
-            {"Game #" + id}<Card.Meta>{"Court " + courtnum}</Card.Meta>
+            {"Game #" + id}
           </Card.Header>
+          <Card.Meta>{"Court " + courtnum}</Card.Meta>
           <Grid columns={2}>
             <Grid.Row>
               <Grid.Column>
@@ -28,6 +28,11 @@ export default class CurrentGameCard extends Component {
             </Grid.Row>
           </Grid>
           <Divider vertical hidden>vs</Divider>
+        </Card.Content>
+        <Card.Content extra>
+          <Button fluid onClick={(game) => this.props.setSingleGame(this.props.game)}>
+            Keep Score
+          </Button>
         </Card.Content>
       </Card>
     )

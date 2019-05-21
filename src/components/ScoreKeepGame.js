@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 
-export default class SingleCurrentGame extends Component {
+export default class ScoreKeepGame extends Component {
 
   render() {
-    const { score, addScore, image, team } = this.props
+    const { score, addScore, image, team, setTeam } = this.props
     return(
       <Card centered>
         <Image src={image}
