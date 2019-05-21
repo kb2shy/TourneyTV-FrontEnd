@@ -3,7 +3,7 @@ import ActionCable from 'actioncable';
 import { Segment, Grid, Divider } from 'semantic-ui-react';
 import SingleCurrentGame from '../components/SingleCurrentGame'
 
-const GAME_URL = 'http://localhost:3000/games';
+const GAMES_URL = 'http://localhost:3000/games/';
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
 const IMAGE = [
@@ -24,43 +24,42 @@ export default class SCGContainer extends Component {
     },
   }
 
-  componentDidMount() {
-    fetch(GAME_URL)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      debugger;
-      if (data.team1score !== null && data.team2score !== null) {
-        this.setState(data);
-      } else {
-        return this.state;
-      }
-    })
+  // componentDidMount() {
+  //   fetch(GAME_URL + "1")
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     if (data.team1score !== null && data.team2score !== null) {
+  //       this.setState(data);
+  //     } else {
+  //       return this.state;
+  //     }
+  //   })
+  //
+  //   const cable = ActionCable.createConsumer(WEBSOCKET)
+  //
+  //   this.sub = cable.subscriptions.create('GamesChannel', {
+  //     received: this.handleReceiveData
+  //   })
+  // }
 
-    const cable = ActionCable.createConsumer(WEBSOCKET)
-
-    this.sub = cable.subscriptions.create('GamesChannel', {
-      received: this.handleReceiveData
-    })
-  }
-
-  handleReceiveData = (data) => {
-    if (data !==  this.state ) {
-      this.setState(data)
-    }
-  }
-
-  addScorePlayer1 = () => {
-    this.setState({ team1: this.state.team1score + 1})
-    let data = {id: 1, team1score: this.state.team1score + 1, team2score: this.state.team2score};
-    this.sub.send(data);
-  }
-
-  addScorePlayer2 = () => {
-    this.setState({ team2score: this.state.team2score + 1})
-    let data = {id: 1, team1score: this.state.team1score, team2score: this.state.team2score + 1};
-    this.sub.send(data);
-  }
+  // this method copied to the App.js - may want to use here
+  // handleReceiveData = (data) => {
+  //   if (data !==  this.state ) {
+  //     this.setState(data)
+  //   }
+  // }
+  //
+  // addScorePlayer1 = () => {
+  //   this.setState({ team1: this.state.team1score + 1})
+  //   let data = {id: 1, team1score: this.state.team1score + 1, team2score: this.state.team2score};
+  //   this.sub.send(data);
+  // }
+  //
+  // addScorePlayer2 = () => {
+  //   this.setState({ team2score: this.state.team2score + 1})
+  //   let data = {id: 1, team1score: this.state.team1score, team2score: this.state.team2score + 1};
+  //   this.sub.send(data);
+  // }
 
   render() {
 

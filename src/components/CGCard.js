@@ -11,7 +11,7 @@ export default class CurrentGameCard extends Component {
       <Card raised>
         <Card.Content textAlign='center'>
           <Card.Header>
-            <h2>{"Game #" + id}</h2>
+            {"Game #" + id}<Card.Meta>{"Court " + courtnum}</Card.Meta>
           </Card.Header>
           <Grid columns={2}>
             <Grid.Row>

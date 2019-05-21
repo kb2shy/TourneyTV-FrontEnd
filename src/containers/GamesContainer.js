@@ -20,7 +20,7 @@ export default class GamesContainer extends Component {
   render(){
     const { games } = this.props;
     return(
-      <Segment>
+      <Segment placeholder>
         <Card.Group itemsPerRow={3}>
           {games.map((game) => (<CGCard raised game={game}/>))}
         </Card.Group>
