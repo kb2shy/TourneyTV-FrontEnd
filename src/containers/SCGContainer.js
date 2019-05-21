@@ -3,7 +3,7 @@ import ActionCable from 'actioncable';
 import { Segment, Grid, Divider } from 'semantic-ui-react';
 import SingleCurrentGame from '../components/SingleCurrentGame'
 
-const GAME_URL = 'http://localhost:3000/games/1';
+const GAME_URL = 'http://localhost:3000/games';
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
 const IMAGE = [
