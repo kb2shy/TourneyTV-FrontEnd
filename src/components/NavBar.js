@@ -6,6 +6,11 @@ export default class NavBar extends Component {
   render() {
     return (
       <Menu inverted color='green' secondary>
+      <Menu.Item
+        name='home'
+        // active={activeItem === 'current games'}
+        onClick={() => this.props.setDisplayState("home")}
+      />
         <Menu.Item
           name='current games'
           // active={activeItem === 'current games'}
