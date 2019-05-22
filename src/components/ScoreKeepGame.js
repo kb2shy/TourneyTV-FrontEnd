@@ -13,7 +13,7 @@ export default class ScoreKeepGame extends Component {
       case 'heros':
         return <Image src={heros} style={{maxHeight: "110px"}}/>
       case 'villains':
-        return <Image src={villains} size="medium"/>
+        return <Image src={villains} verticalAlign="true"/>
       case 'team3':
         return <Image src={team3} size="medium"/>
       case 'team4':
