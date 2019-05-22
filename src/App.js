@@ -8,7 +8,12 @@ import ScoreKeepGameContainer from './containers/ScoreKeepGameContainer'
 import GamesContainer from './containers/GamesContainer'
 
 //image assets
+import vblogo1 from './assets/vblogo1.jpg'
 import vblogo2 from './assets/vblogo2.png'
+import vblogo3 from './assets/vblogo3.png'
+import vblogo4 from './assets/vblogo4.png'
+import vblogo5 from './assets/vblogo5.png'
+import vblogo6 from './assets/vblogo6.png'
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const WEBSOCKET = 'ws://localhost:3000/cable';
@@ -95,9 +100,9 @@ class App extends Component {
   getDisplay = () => {
     switch (this.state.displayThis) {
       case "allgames":
-        return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>
+        return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>;
       default:
-        return <Image src={vblogo2} size="medium" centered />
+        return <Image src={vblogo4} style={{marginTop: "3px"}} centered />;
     }
   }
 
