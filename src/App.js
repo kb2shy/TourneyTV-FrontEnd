@@ -15,6 +15,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      displayThis: '',
       games: [],
       game: {
         id: '',
@@ -41,7 +42,6 @@ class App extends Component {
   }
 
   handleReceiveData = (data) => {
-    console.log(data);
     debugger;
     if (data !==  this.state.games[data.id - 1] ) {
       console.log(`data does not equal content in this.state.games[${data.id}]`)
@@ -51,6 +51,7 @@ class App extends Component {
     }
   }
 
+  // update game scores for team1 and team2
   updateScore = (team) => {
     debugger;
     let updateGame = this.state.game;
@@ -63,14 +64,7 @@ class App extends Component {
     this.sub.send(updateGame);
   }
 
-  // addScoreTeam2 = () => {
-  //   let updateGame = this.state.game;
-  //   updateGame["team2score"] = this.state.game.team2score + 1;
-  //   this.setState({ updateGame })
-  //   this.sub.send(updateGame);
-  // }
-
-  // pass this prop through SingleGameContainer
+  // render single game component through SingleGameContainer
   setSingleGame = (game) => {
     if (game.team1score === null || game.team2score === null) {
       this.setState({ game: {
@@ -85,11 +79,21 @@ class App extends Component {
     }
   }
 
+  setDisplayState = (menuItem) => {
+    this.setState({ displayThis: menuItem })
+  }
+
+  getDisplay = () => {
+    if (this.state.displayThis === "allgames") {
+      return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>
+    }
+  }
+
   render() {
     return (
       <Container>
-        <MenuContainer />
-        <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>
+        <MenuContainer setDisplayState={this.setDisplayState}/>
+        {this.getDisplay()}
         {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
       </Container>
     )

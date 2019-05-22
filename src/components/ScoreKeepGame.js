@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Card, Image, Button } from 'semantic-ui-react';
 
 export default class ScoreKeepGame extends Component {
 
   render() {
     const { score, updateScore, team, image } = this.props
     return(
-      <Card centered>
+      <Card centered placeholder>
         <Image src={image}
           size="medium"
           circular

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ActionCable from 'actioncable';
 import { Segment, Grid, Divider } from 'semantic-ui-react';
 import ScoreKeepGame from '../components/ScoreKeepGame'
 
@@ -12,7 +11,7 @@ export default class ScoreKeepGameContainer extends Component {
 
   render() {
     const { updateScore } = this.props
-    const { id, courtnum, team1score, team2score, teams } = this.props.game
+    const { courtnum, team1score, team2score, teams } = this.props.game
     return (
       <Segment placeholder>
         <Grid centered>
