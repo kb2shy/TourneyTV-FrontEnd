@@ -51,7 +51,6 @@ class App extends Component {
 
   handleReceiveData = (data) => {
     if (data !==  this.state.games[data.id - 1] ) {
-      console.log(`data does not equal content in this.state.games[${data.id}]`)
       let games = this.state.games;
       games[data.id - 1] = data;
       this.setState(games)
@@ -108,7 +107,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("in render:", this.state.displayThis)
     return (
       <Container>
         <MenuContainer setDisplayState={this.setDisplayState}/>

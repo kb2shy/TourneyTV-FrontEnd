@@ -11,7 +11,7 @@ export default class ScoreKeepGame extends Component {
   renderImage = (name) => {
     switch(name) {
       case 'heros':
-        return <Image src={heros} size="medium"/>
+        return <Image src={heros} style={{maxHeight: "110px"}}/>
       case 'villains':
         return <Image src={villains} size="medium"/>
       case 'team3':
