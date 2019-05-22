@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Grid, Divider, Button } from 'semantic-ui-react';
+import { Card, Grid, Divider } from 'semantic-ui-react';
 
 export default class GameCard extends Component {
 

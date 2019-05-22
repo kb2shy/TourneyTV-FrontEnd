@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Container, Modal } from 'semantic-ui-react';
+import { Container, Image } from 'semantic-ui-react';
 import ActionCable from 'actioncable';
 
 import MenuContainer from './containers/MenuContainer'
 import ScoreKeepGameContainer from './containers/ScoreKeepGameContainer'
 import GamesContainer from './containers/GamesContainer'
+
+//image assets
+import vblogo2 from './assets/vblogo2.png'
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const WEBSOCKET = 'ws://localhost:3000/cable';
@@ -24,7 +27,6 @@ class App extends Component {
         team2score: '',
         teams: {},
       },
-      open: false,
     }
   }
 
@@ -82,12 +84,20 @@ class App extends Component {
   }
 
   setDisplayState = (menuItem) => {
-    this.setState({ displayThis: menuItem })
+    if (menuItem !== "allgames") {
+      this.setState({ displayThis: '', game: '' })
+    } else {
+      this.setState({ displayThis: menuItem })
+    }
+
   }
 
   getDisplay = () => {
-    if (this.state.displayThis === "allgames") {
-      return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>
+    switch (this.state.displayThis) {
+      case "allgames":
+        return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>
+      default:
+        return <Image src={vblogo2} size="medium" centered />
     }
   }
 
@@ -100,9 +110,7 @@ class App extends Component {
       <Container>
         <MenuContainer setDisplayState={this.setDisplayState}/>
         {this.getDisplay()}
-        <Modal open={this.state.open} onClose={this.close}>
-          {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
-        </Modal>
+        {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
       </Container>
     )
   }

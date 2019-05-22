@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import { Segment, Grid, Divider } from 'semantic-ui-react';
-import { Button, Header, Modal} from 'semantic-ui-react';
+import { Segment, Grid, Divider, Header } from 'semantic-ui-react';
 import ScoreKeepGame from '../components/ScoreKeepGame'
 
 const IMAGE = [
@@ -14,21 +13,20 @@ export default class ScoreKeepGameContainer extends Component {
     const { updateScore } = this.props
     const { id, courtnum, team1score, team2score, teams } = this.props.game
     return (
-      <Modal.Header textAlign='center'>Game #{id} - Court #{courtnum}</Modal.Header>
+      <Segment placeholder>
+        <Grid centered>
+          <Grid.Row centered columns={2}>
+            <Header size="medium">Game #{id} - Court #{courtnum}</Header>
+            <Grid.Column centered>
+            <ScoreKeepGame team={teams[0]} score={team1score} updateScore={updateScore} image={IMAGE[0]}/>
+            </Grid.Column>
+            <Grid.Column>
+            <ScoreKeepGame team={teams[1]} score={team2score} updateScore={updateScore} image={IMAGE[1]}/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <Divider vertical hidden>versus</Divider>
+      </Segment>
     )
   }
 }
-
-// <Segment placeholder>
-//   <Grid centered>
-//     <Grid.Row centered columns={2}>
-//       <Grid.Column centered>
-//       <ScoreKeepGame team={teams[0]} score={team1score} updateScore={updateScore} image={IMAGE[0]}/>
-//       </Grid.Column>
-//       <Grid.Column>
-//       <ScoreKeepGame team={teams[1]} score={team2score} updateScore={updateScore} image={IMAGE[1]}/>
-//       </Grid.Column>
-//     </Grid.Row>
-//   </Grid>
-//   <Divider vertical hidden>versus</Divider>
-// </Segment>
