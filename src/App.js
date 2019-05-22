@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Container } from 'semantic-ui-react';
+import { Container, Modal } from 'semantic-ui-react';
 import ActionCable from 'actioncable';
 
 import MenuContainer from './containers/MenuContainer'
@@ -23,7 +23,8 @@ class App extends Component {
         team1score: '',
         team2score: '',
         teams: {},
-      }
+      },
+      open: false,
     }
   }
 
@@ -73,9 +74,10 @@ class App extends Component {
         team1score: 0,
         team2score: 0,
         teams: game.teams,
+        open: true,
       }})
     } else {
-      this.setState({game})
+      this.setState({game, open: true})
     }
   }
 
@@ -89,12 +91,18 @@ class App extends Component {
     }
   }
 
+  close = () => {
+    this.setState({open: false})
+  }
+
   render() {
     return (
       <Container>
         <MenuContainer setDisplayState={this.setDisplayState}/>
         {this.getDisplay()}
-        {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
+        <Modal open={this.state.open} onClose={this.close}>
+          {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
+        </Modal>
       </Container>
     )
   }

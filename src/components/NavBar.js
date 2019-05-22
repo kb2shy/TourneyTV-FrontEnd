@@ -12,30 +12,27 @@ export default class NavBar extends Component {
           onClick={() => this.props.setDisplayState("allgames")}
         />
         <Menu.Item
-          name='game schedule'
-          // active={activeItem === 'game schedule'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
           name='teams'
           // active={activeItem === 'teams'}
-          onClick={this.handleItemClick}
+          onClick={() => this.props.setDisplayState("teams")}
         />
         <Menu.Item
           name='players'
           // active={activeItem === 'players'}
-          onClick={this.handleItemClick}
+          onClick={() => this.props.setDisplayState("players")}
         />
         <Menu.Item
           className="float right"
           name='account'
           // active={activeItem === 'account'}
           onClick={this.handleItemClick}
+          disable
         />
         <Menu.Item
           name='sign up'
           // active={activeItem === 'sign up'}
           onClick={this.handleItemClick}
+          disable
         />
       </Menu>
     )

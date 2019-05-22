@@ -3,11 +3,10 @@ import { Card, Grid, Divider, Button } from 'semantic-ui-react';
 
 export default class GameCard extends Component {
 
-
   render() {
     const { id, courtnum, team1score, team2score, teams} = this.props.game
     return (
-      <Card raised>
+      <Card raised onClick={(data) => this.props.setSingleGame(this.props.game)}>
         <Card.Content textAlign='center'>
           <Card.Header>
             {"Game #" + id}
@@ -29,11 +28,7 @@ export default class GameCard extends Component {
           </Grid>
           <Divider vertical hidden>vs</Divider>
         </Card.Content>
-        <Card.Content extra>
-          <Button fluid onClick={(game) => this.props.setSingleGame(this.props.game)}>
-            Keep Score
-          </Button>
-        </Card.Content>
+
       </Card>
     )
   }
