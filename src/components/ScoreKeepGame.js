@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 
+import heros from '../assets/heros.gif';
+import villains from '../assets/villains.gif';
+import team3 from '../assets/team3.png';
+import team4 from '../assets/team4.png';
+
 export default class ScoreKeepGame extends Component {
 
+  renderImage = (name) => {
+    switch(name) {
+      case 'heros':
+        return <Image src={heros} size="medium"/>
+      case 'villains':
+        return <Image src={villains} size="medium"/>
+      case 'team3':
+        return <Image src={team3} size="medium"/>
+      case 'team4':
+        return <Image src={team4} size="medium"/>
+      default:
+        return null;
+    }
+  }
+
   render() {
-    const { score, updateScore, team, image } = this.props
+    const { score, updateScore, team} = this.props
     return(
       <Card centered placeholder>
-        <Image src={image}
-          size="medium"
-          circular
-        />
+        {this.renderImage(team.image)}
         <Card.Content textAlign='center'>
           <Card.Header >Team: {team.name}</Card.Header>
           <Card.Description>

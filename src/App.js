@@ -10,12 +10,16 @@ import TeamsContainer from './containers/TeamsContainer';
 import PlayersContainer from './containers/PlayersContainer';
 
 //image assets
-import vblogo1 from './assets/vblogo1.jpg'
-import vblogo2 from './assets/vblogo2.png'
-import vblogo3 from './assets/vblogo3.png'
-import vblogo4 from './assets/vblogo4.png'
-import vblogo5 from './assets/vblogo5.png'
-import vblogo6 from './assets/vblogo6.png'
+// import vblogo1 from './assets/vblogo1.jpg';
+// import vblogo2 from './assets/vblogo2.png';
+// import vblogo3 from './assets/vblogo3.png';
+import vblogo4 from './assets/vblogo4.png';
+// import vblogo5 from './assets/vblogo5.png';
+// import vblogo6 from './assets/vblogo6.png';
+// import heros from './assets/heros.gif';
+// import villains from './assets/villains.gif';
+// import team3 from './assets/team3.png';
+// import team4 from './assets/team4.png';
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const WEBSOCKET = 'ws://localhost:3000/cable';
@@ -27,13 +31,7 @@ class App extends Component {
     this.state = {
       displayThis: '',
       games: [],
-      game: {
-        id: '',
-        courtnum: '',
-        team1score: '',
-        team2score: '',
-        teams: {},
-      },
+      game: {},
     }
   }
 

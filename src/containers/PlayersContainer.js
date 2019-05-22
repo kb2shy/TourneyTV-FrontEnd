@@ -5,7 +5,7 @@ export default class TeamsContainer extends Component {
 
   render(){
     return(
-      <h1>Players go here</h1>
+      <Header as='h1' textAlign='center'>Players go here</Header>
     )
   }
 }
