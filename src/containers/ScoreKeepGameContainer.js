@@ -21,7 +21,7 @@ export default class ScoreKeepGameContainer extends Component {
             <ScoreKeepGame team={teams[0]} score={team1score} updateScore={updateScore} image={IMAGE[0]}/>
             </Grid.Column>
             <Grid.Column>
-            <ScoreKeepGame team={teams[1]} score={team2score} updateScore={updateScore} image={IMAGE[0]}/>
+            <ScoreKeepGame team={teams[1]} score={team2score} updateScore={updateScore} image={IMAGE[1]}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
