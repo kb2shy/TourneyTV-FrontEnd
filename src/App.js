@@ -3,9 +3,11 @@ import './App.css';
 import { Container, Image } from 'semantic-ui-react';
 import ActionCable from 'actioncable';
 
-import MenuContainer from './containers/MenuContainer'
-import ScoreKeepGameContainer from './containers/ScoreKeepGameContainer'
-import GamesContainer from './containers/GamesContainer'
+import MenuContainer from './containers/MenuContainer';
+import ScoreKeepGameContainer from './containers/ScoreKeepGameContainer';
+import GamesContainer from './containers/GamesContainer';
+import TeamsContainer from './containers/TeamsContainer';
+import PlayersContainer from './containers/PlayersContainer';
 
 //image assets
 import vblogo1 from './assets/vblogo1.jpg'
@@ -50,7 +52,6 @@ class App extends Component {
   }
 
   handleReceiveData = (data) => {
-    debugger;
     if (data !==  this.state.games[data.id - 1] ) {
       console.log(`data does not equal content in this.state.games[${data.id}]`)
       let games = this.state.games;
@@ -61,7 +62,6 @@ class App extends Component {
 
   // update game scores for team1 and team2
   updateScore = (team) => {
-    debugger;
     let updateGame = this.state.game;
     if (team.name === this.state.game.teams[0].name) {
       updateGame["team1score"] = this.state.game.team1score + 1;
@@ -89,18 +89,17 @@ class App extends Component {
   }
 
   setDisplayState = (menuItem) => {
-    if (menuItem !== "allgames") {
-      this.setState({ displayThis: '', game: '' })
-    } else {
-      this.setState({ displayThis: menuItem })
-    }
-
+    this.setState({ displayThis: menuItem, game: {} })
   }
 
   getDisplay = () => {
     switch (this.state.displayThis) {
       case "allgames":
         return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>;
+      case "allteams":
+        return <TeamsContainer />
+      case "allplayers":
+        return <PlayersContainer />
       default:
         return <Image src={vblogo4} style={{marginTop: "3px"}} centered />;
     }
@@ -111,6 +110,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("in render:", this.state.displayThis)
     return (
       <Container>
         <MenuContainer setDisplayState={this.setDisplayState}/>
