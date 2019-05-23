@@ -17,13 +17,13 @@ export default class ScoreKeepGame extends Component {
             <h2>Score: {score}</h2>
           </Card.Description>
         </Card.Content>
-        <Card.Content extra style={{display: "flex"}}>
-          <Button onClick={(team) => minusScore(this.props.team)} color="red" >
-            -
+        <Card.Content extra style={{display: "flex", backgroundColor: "lightgrey"}}>
+          <Button onClick={(team) => minusScore(this.props.team)} color="red" inverted>
+            <h3>-</h3>
           </Button>
           <h4>POINTS</h4>
-          <Button onClick={(team) => addScore(this.props.team)} color="green">
-            +
+          <Button onClick={(team) => addScore(this.props.team)} color="green" inverted>
+            <h3>+</h3>
           </Button>
         </Card.Content>
       </Card>

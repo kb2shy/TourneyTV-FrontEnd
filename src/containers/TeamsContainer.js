@@ -27,7 +27,7 @@ export default class TeamsContainer extends Component {
   }
 
   close = () => {
-    this.setState({ open: false, team: {}})
+    this.setState({team: {}, open: false,})
   }
 
   render(){
@@ -41,15 +41,11 @@ export default class TeamsContainer extends Component {
               setTeamDisplay={this.setTeamDisplay}/>))
           }
         </Card.Group>
-        <Modal open={this.state.open} onClose={this.close} closeIcon>
-          <Modal.Header>
-            Name: {name} <br />
-            City: {city}
-          </Modal.Header>
-          <Modal.Content>
-            <TeamModal team={this.state.team} />
-          </Modal.Content>
-        </Modal>
+
+        {this.state.team.id ?
+          <TeamModal open={this.state.open} close={this.close} team={this.state.team} />
+          : null}
+
       </Segment>
     )
   }
