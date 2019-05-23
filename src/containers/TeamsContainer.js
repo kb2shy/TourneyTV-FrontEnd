@@ -12,6 +12,7 @@ export default class TeamsContainer extends Component {
     this.state = {
       teams: [],
       team: {},
+      open: false,
     }
   }
 
@@ -22,14 +23,16 @@ export default class TeamsContainer extends Component {
   }
 
   setTeamDisplay = (team) => {
-    console.log(team);
-    debugger;
-    this.setState({ team })
+    this.setState({ team, open: true })
+  }
+
+  close = () => {
+    this.setState({ open: false, team: {}})
   }
 
   render(){
-    console.log(this.state)
     const { teams } = this.state
+    const { name, city } = this.state.team
     return(
       <Segment>
         <Card.Group centered>
@@ -38,8 +41,18 @@ export default class TeamsContainer extends Component {
               setTeamDisplay={this.setTeamDisplay}/>))
           }
         </Card.Group>
-        {this.state.team.id ? <TeamModal team={this.state.team} /> : null}
+        <Modal open={this.state.open} onClose={this.close} closeIcon>
+          <Modal.Header>
+            Name: {name} <br />
+            City: {city}
+          </Modal.Header>
+          <Modal.Content>
+            <TeamModal team={this.state.team} />
+          </Modal.Content>
+        </Modal>
       </Segment>
     )
   }
 }
+
+// ? <TeamModal team={this.state.team} resetTeam={this.resetTeam}/> : null}
