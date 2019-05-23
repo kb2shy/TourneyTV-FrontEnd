@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Segment, Modal, Header } from 'semantic-ui-react';
+import { Card, Segment, Modal, Image, Header, Grid} from 'semantic-ui-react';
 
 import TeamCard from '../components/TeamCard';
 
@@ -31,6 +31,7 @@ export default class TeamsContainer extends Component {
 
   render(){
     const { teams } = this.state
+    const { name, city, image, players } = this.state.team
     return(
       <Segment>
         <Card.Group centered>
@@ -40,12 +41,28 @@ export default class TeamsContainer extends Component {
           }
         </Card.Group>
         <Modal open={this.state.open} onClose={this.close} closeIcon>
-          <Modal.Header as='h1' style={{margin: "auto", width:"50%"}}>
-            {this.state.team.name} (City: {this.state.team.city})
+          <Modal.Header>
+            Name: {this.state.team.name} <br />
+            City: {this.state.team.city}
           </Modal.Header>
-          
+          <Modal.Content>
+            <Grid celled>
+              <Grid.Row>
+                <Grid.Column width={6}>
+                  <Image src={"/images/" + image} />
+                </Grid.Column>
+                <Grid.Column width={10}>
+                  <Header as='h2'>Players</Header>
+                  {console.log(players)}
+
+
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Content>
         </Modal>
       </Segment>
     )
   }
 }
+// {players.map((player, index) => <Card>{player.id})</Card>)}
