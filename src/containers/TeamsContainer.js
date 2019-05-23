@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, Segment, Modal, Image, Header, Grid} from 'semantic-ui-react';
 
 import TeamCard from '../components/TeamCard';
+import TeamModal from '../components/TeamModal';
 
 const TEAMS_URL = 'http://localhost:3000/teams';
 
@@ -11,7 +12,6 @@ export default class TeamsContainer extends Component {
     this.state = {
       teams: [],
       team: {},
-      open: false,
     }
   }
 
@@ -22,16 +22,14 @@ export default class TeamsContainer extends Component {
   }
 
   setTeamDisplay = (team) => {
-    this.setState({ team, open: true })
-  }
-
-  close = () => {
-    this.setState({ open: false})
+    console.log(team);
+    debugger;
+    this.setState({ team })
   }
 
   render(){
+    console.log(this.state)
     const { teams } = this.state
-    const { name, city, image, players } = this.state.team
     return(
       <Segment>
         <Card.Group centered>
@@ -40,29 +38,8 @@ export default class TeamsContainer extends Component {
               setTeamDisplay={this.setTeamDisplay}/>))
           }
         </Card.Group>
-        <Modal open={this.state.open} onClose={this.close} closeIcon>
-          <Modal.Header>
-            Name: {this.state.team.name} <br />
-            City: {this.state.team.city}
-          </Modal.Header>
-          <Modal.Content>
-            <Grid celled>
-              <Grid.Row>
-                <Grid.Column width={6}>
-                  <Image src={"/images/" + image} />
-                </Grid.Column>
-                <Grid.Column width={10}>
-                  <Header as='h2'>Players</Header>
-                  {console.log(players)}
-
-
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Modal.Content>
-        </Modal>
+        {this.state.team.id ? <TeamModal team={this.state.team} /> : null}
       </Segment>
     )
   }
 }
-// {players.map((player, index) => <Card>{player.id})</Card>)}
