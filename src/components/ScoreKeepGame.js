@@ -24,7 +24,7 @@ export default class ScoreKeepGame extends Component {
   }
 
   render() {
-    const { score, updateScore, team} = this.props
+    const { score, minusScore, addScore, team} = this.props
     return(
       <Card centered placeholder>
         {this.renderImage(team.image)}
@@ -37,9 +37,13 @@ export default class ScoreKeepGame extends Component {
             <h2>Score: {score}</h2>
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
-          <Button onClick={(team) => updateScore(this.props.team)}>
-            Add Point
+        <Card.Content extra style={{display: "flex"}}>
+          <Button onClick={(team) => minusScore(this.props.team)} color="red" >
+            -
+          </Button>
+          <h4>POINTS</h4>
+          <Button onClick={(team) => addScore(this.props.team)} color="green">
+            +
           </Button>
         </Card.Content>
       </Card>

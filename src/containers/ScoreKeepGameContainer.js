@@ -5,7 +5,7 @@ import ScoreKeepGame from '../components/ScoreKeepGame'
 export default class ScoreKeepGameContainer extends Component {
 
   render() {
-    const { updateScore } = this.props
+    const { minusScore, addScore } = this.props
     const { id, courtnum, team1score, team2score, teams } = this.props.game
     return (
       <Segment placeholder>
@@ -13,10 +13,20 @@ export default class ScoreKeepGameContainer extends Component {
           <Grid.Row centered columns={2}>
             <Header size="medium">Game #{id} - Court #{courtnum}</Header>
             <Grid.Column centered>
-            <ScoreKeepGame team={teams[0]} score={team1score} updateScore={updateScore}/>
+            <ScoreKeepGame
+              team={teams[0]}
+              score={team1score}
+              minusScore={minusScore}
+              addScore={addScore}
+            />
             </Grid.Column>
             <Grid.Column>
-            <ScoreKeepGame team={teams[1]} score={team2score} updateScore={updateScore}/>
+            <ScoreKeepGame
+              team={teams[1]}
+              score={team2score}
+              minusScore={minusScore}
+              addScore={addScore}
+            />
             </Grid.Column>
           </Grid.Row>
         </Grid>

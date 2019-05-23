@@ -57,13 +57,25 @@ export default class App extends Component {
     }
   }
 
-  // update game scores for team1 and team2
-  updateScore = (team) => {
+  // add game scores for team1 and team2
+  addScore = (team) => {
     let updateGame = this.state.game;
     if (team.name === this.state.game.teams[0].name) {
       updateGame["team1score"] = this.state.game.team1score + 1;
     } else {
       updateGame["team2score"] = this.state.game.team2score + 1;
+    }
+    this.setState({ updateGame });
+    this.sub.send(updateGame);
+  }
+
+  // subtract game scores for team1 and team2
+  minusScore = (team) => {
+    let updateGame = this.state.game;
+    if (team.name === this.state.game.teams[0].name) {
+      updateGame["team1score"] = this.state.game.team1score - 1;
+    } else {
+      updateGame["team2score"] = this.state.game.team2score - 1;
     }
     this.setState({ updateGame });
     this.sub.send(updateGame);
@@ -116,7 +128,11 @@ export default class App extends Component {
             Game #{this.state.game.id} - Court #{this.state.game.courtnum}
           </Header>
           <Modal.Content>
-            <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/>
+            <ScoreKeepGameContainer
+              game={this.state.game}
+              addScore={this.addScore}
+              minusScore={this.minusScore}
+            />
           </Modal.Content>
         </Modal>
 
