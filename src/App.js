@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import { Container, Image } from 'semantic-ui-react';
+import { Container, Image, Modal, Header } from 'semantic-ui-react';
 import ActionCable from 'actioncable';
 
 import MenuContainer from './containers/MenuContainer';
@@ -16,7 +15,7 @@ import PlayersContainer from './containers/PlayersContainer';
 import vblogo4 from './assets/vblogo4.png';
 // import vblogo5 from './assets/vblogo5.png';
 // import vblogo6 from './assets/vblogo6.png';
-// import heros from './assets/heros.gif';
+// import heroes from './assets/heroes.gif';
 // import villains from './assets/villains.gif';
 // import team3 from './assets/team3.png';
 // import team4 from './assets/team4.png';
@@ -24,7 +23,7 @@ import vblogo4 from './assets/vblogo4.png';
 const GAMES_URL = 'http://localhost:3000/games/';
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
-class App extends Component {
+export default class App extends Component {
 
   constructor() {
     super()
@@ -32,6 +31,7 @@ class App extends Component {
       displayThis: '',
       games: [],
       game: {},
+      open: false,
     }
   }
 
@@ -111,10 +111,17 @@ class App extends Component {
       <Container>
         <MenuContainer setDisplayState={this.setDisplayState}/>
         {this.getDisplay()}
-        {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
+        <Modal open={this.state.open} onClose={this.close} centered='true'>
+          <Header as='h1' textAlign='center'>
+            Game #{this.state.game.id} - Court #{this.state.game.courtnum}
+          </Header>
+          <Modal.Content>
+            <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/>
+          </Modal.Content>
+        </Modal>
+
       </Container>
     )
   }
 }
-
-export default App;
+// {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}
