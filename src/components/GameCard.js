@@ -28,7 +28,6 @@ export default class GameCard extends Component {
           </Grid>
           <Divider vertical hidden>vs</Divider>
         </Card.Content>
-
       </Card>
     )
   }

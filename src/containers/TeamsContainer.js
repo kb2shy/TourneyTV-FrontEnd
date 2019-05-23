@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Segment } from 'semantic-ui-react';
+import { Card, Segment, Modal, Header } from 'semantic-ui-react';
 
 import TeamCard from '../components/TeamCard';
 
@@ -10,6 +10,8 @@ export default class TeamsContainer extends Component {
     super(props)
     this.state = {
       teams: [],
+      team: {},
+      open: false,
     }
   }
 
@@ -20,7 +22,11 @@ export default class TeamsContainer extends Component {
   }
 
   setTeamDisplay = (team) => {
-    this.setState({ team })
+    this.setState({ team, open: true })
+  }
+
+  close = () => {
+    this.setState({ open: false})
   }
 
   render(){
@@ -33,6 +39,12 @@ export default class TeamsContainer extends Component {
               setTeamDisplay={this.setTeamDisplay}/>))
           }
         </Card.Group>
+        <Modal open={this.state.open} onClose={this.close} closeIcon>
+          <Modal.Header as='h1' style={{margin: "auto", width:"50%"}}>
+            {this.state.team.name} (City: {this.state.team.city})
+          </Modal.Header>
+          
+        </Modal>
       </Segment>
     )
   }

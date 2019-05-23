@@ -11,7 +11,6 @@ export default class ScoreKeepGameContainer extends Component {
       <Segment placeholder>
         <Grid centered>
           <Grid.Row centered columns={2}>
-            <Header size="medium">Game #{id} - Court #{courtnum}</Header>
             <Grid.Column centered>
             <ScoreKeepGame
               team={teams[0]}

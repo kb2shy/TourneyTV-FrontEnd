@@ -12,7 +12,7 @@ import PlayersContainer from './containers/PlayersContainer';
 // import vblogo1 from './assets/vblogo1.jpg';
 // import vblogo2 from './assets/vblogo2.png';
 // import vblogo3 from './assets/vblogo3.png';
-import vblogo4 from './assets/vblogo4.png';
+// import vblogo4 from './assets/vblogo4.png';
 // import vblogo5 from './assets/vblogo5.png';
 // import vblogo6 from './assets/vblogo6.png';
 // import heroes from './assets/heroes.gif';
@@ -110,7 +110,7 @@ export default class App extends Component {
       case "allplayers":
         return <PlayersContainer />
       default:
-        return <Image src={vblogo4} style={{marginTop: "3px"}} centered />;
+        return <Image src="/images/vblogo4.png" style={{marginTop: "3px"}} centered />;
     }
   }
 
