@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Segment, Modal, Image, Header, Grid} from 'semantic-ui-react';
+import { Card, Segment } from 'semantic-ui-react';
 
 import TeamCard from '../components/TeamCard';
 import TeamModal from '../components/TeamModal';
@@ -32,7 +32,7 @@ export default class TeamsContainer extends Component {
 
   render(){
     const { teams } = this.state
-    const { id, name, city } = this.state.team
+    const { id } = this.state.team
     return(
       <Segment>
         <Card.Group centered>

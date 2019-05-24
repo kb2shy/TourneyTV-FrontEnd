@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Image, Grid } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 import PlayerModal from './PlayerModal'
 
