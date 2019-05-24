@@ -32,7 +32,7 @@ export default class TeamsContainer extends Component {
 
   render(){
     const { teams } = this.state
-    const { name, city } = this.state.team
+    const { id, name, city } = this.state.team
     return(
       <Segment>
         <Card.Group centered>
@@ -42,8 +42,8 @@ export default class TeamsContainer extends Component {
           }
         </Card.Group>
 
-        {this.state.team.id ?
-          <TeamModal open={this.state.open} close={this.close} team={this.state.team} />
+        {this.state.open ?
+          <TeamModal key={id} open={this.state.open} close={this.close} team={this.state.team} />
           : null}
 
       </Segment>
