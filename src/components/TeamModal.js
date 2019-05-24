@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Modal, Grid, Image, Header} from 'semantic-ui-react';
 
+import PlayerCard from '../components/PlayerCard'
+
 export default class TeamModal extends Component {
 
   render(){
@@ -19,9 +21,13 @@ export default class TeamModal extends Component {
               </Grid.Column>
               <Grid.Column width={10} verticalAlign="middle">
                 <Header as='h2'>Players</Header>
-                {console.log(players)}
-                {players.map((player, index) => <Card raised>{player.id})</Card>)}
-
+                <Card.Group itemsPerRow={3}>
+                  {players.map((player, index) =>
+                    (<Modal.Actions>
+                        <PlayerCard key={index} player={player}/>
+                    </Modal.Actions>))
+                  }
+                </Card.Group>
               </Grid.Column>
             </Grid.Row>
           </Grid>
