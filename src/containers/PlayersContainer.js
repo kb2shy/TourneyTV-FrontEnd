@@ -31,7 +31,7 @@ export default class PlayersContainer extends Component {
   }
 
   render(){
-    const { players, open } = this.state
+    const { players, player, open } = this.state
     return(
       <Container style={{marginTop: "5px"}}>
         <Header as='h1' textAlign='center'>Registered Players</Header>

@@ -21,6 +21,8 @@ export default class App extends Component {
       games: [],
       game: {},
       open: false,
+      current_user: {},
+      isLoggedIn: false,
     }
   }
 

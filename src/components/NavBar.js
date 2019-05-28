@@ -28,9 +28,9 @@ export default class NavBar extends Component {
         />
         <Menu.Item
           className="float right"
-          name='account'
+          name='Log in'
           // active={activeItem === 'account'}
-          onClick={() => console.log("account on navbar clicked")}
+          onClick={() => console.log("log in on navbar clicked")}
           disable="true"
         />
         <Menu.Item
