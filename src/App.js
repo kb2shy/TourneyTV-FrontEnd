@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Image, Modal, Header } from 'semantic-ui-react';
+import { Container, Image, Modal, Header, Message } from 'semantic-ui-react';
 import ActionCable from 'actioncable';
 
 import MenuContainer from './containers/MenuContainer';
@@ -9,6 +9,7 @@ import TeamsContainer from './containers/TeamsContainer';
 import PlayersContainer from './containers/PlayersContainer';
 import LoginContainer from './containers/LoginContainer';
 import SignupContainer from './containers/SignupContainer';
+import AccountContainer from './containers/AccountContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const LOGIN_URL = 'http://localhost:3000/login';
@@ -26,6 +27,7 @@ export default class App extends Component {
       open: false,
       current_user: {},
       isLoggedIn: false,
+      visible: false,
     }
   }
 
@@ -100,13 +102,15 @@ export default class App extends Component {
       case "allgames":
         return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>;
       case "allteams":
-        return <TeamsContainer />
+        return <TeamsContainer />;
       case "allplayers":
-        return <PlayersContainer />
+        return <PlayersContainer />;
       case "login":
-        return <LoginContainer loginPlayer={this.loginPlayer}/>
+        return <LoginContainer loginPlayer={this.loginPlayer} setLoginMessage={this.setLoginMessage}/>;
       case "signup":
-        return <SignupContainer createPlayer={this.createPlayer}/>
+        return <SignupContainer createPlayer={this.createPlayer}/>;
+      case "account":
+        return <AccountContainer current_user={this.state.current_user} />;
       default:
         return <Image src="/images/vblogo4.png" style={{marginTop: "3px"}} centered />;
     }
@@ -141,9 +145,15 @@ export default class App extends Component {
   }
 
   logout = () => {
-    console.log("logout pressed")
-    debugger
     this.setState({ current_user: {}, isLoggedIn: false, displayThis: ""})
+  }
+
+  setLoginMessage = () => {
+    this.setState({visible: true})
+  }
+
+  dismissMessage = () => {
+    this.setState({visible: false})
   }
 
   render() {
@@ -155,6 +165,12 @@ export default class App extends Component {
           logout={this.logout}
           current_user={this.state.current_user}
         />
+        {this.state.visible ?
+          <Message
+            success header='Log in successful'
+            content="Welcome to Volleyball Tournament Management Systems"
+            onDismiss={this.dismissMessage}
+          /> : null}
         {this.getDisplay()}
         <Modal open={this.state.open} onClose={this.close} centered>
           <Header as='h1' textAlign='center'>
