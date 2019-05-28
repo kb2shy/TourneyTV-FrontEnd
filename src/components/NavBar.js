@@ -30,7 +30,7 @@ export default class NavBar extends Component {
           className="float right"
           name='Log in'
           // active={activeItem === 'account'}
-          onClick={() => console.log("log in on navbar clicked")}
+          onClick={() => this.props.setDisplayState("login")}
           disable="true"
         />
         <Menu.Item

@@ -7,6 +7,7 @@ import ScoreKeepGameContainer from './containers/ScoreKeepGameContainer';
 import GamesContainer from './containers/GamesContainer';
 import TeamsContainer from './containers/TeamsContainer';
 import PlayersContainer from './containers/PlayersContainer';
+import LoginContainer from './containers/LoginContainer';
 import SignupContainer from './containers/SignupContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
@@ -100,6 +101,8 @@ export default class App extends Component {
         return <TeamsContainer />
       case "allplayers":
         return <PlayersContainer />
+      case "login":
+        return <LoginContainer />
       case "signup":
         return <SignupContainer />
       default:
