@@ -5,6 +5,10 @@ import Login from '../components/Login'
 
 export default class LoginContainer extends Component {
 
+  state = {
+    player: {}
+  }
+
   render(){
     return(
       <Segment inverted color='green'>

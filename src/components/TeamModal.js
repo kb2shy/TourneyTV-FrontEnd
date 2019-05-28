@@ -23,8 +23,8 @@ export default class TeamModal extends Component {
                 <Header as='h2'>Players</Header>
                 <Card.Group itemsPerRow={3}>
                   {players.map((player, index) =>
-                    (<Modal.Actions>
-                        <PlayerCard key={index} player={player}/>
+                    (<Modal.Actions key={index}>
+                        <PlayerCard player={player}/>
                     </Modal.Actions>))
                   }
                 </Card.Group>

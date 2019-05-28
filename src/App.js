@@ -119,7 +119,7 @@ export default class App extends Component {
       <Container>
         <MenuContainer setDisplayState={this.setDisplayState}/>
         {this.getDisplay()}
-        <Modal open={this.state.open} onClose={this.close} centered='true'>
+        <Modal open={this.state.open} onClose={this.close} centered>
           <Header as='h1' textAlign='center'>
             Game #{this.state.game.id} - Court #{this.state.game.courtnum}
           </Header>

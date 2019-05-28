@@ -4,7 +4,6 @@ import { Modal, Image, Grid } from 'semantic-ui-react';
 export default class PlayerModal extends Component {
 
   render(){
-    console.log(this.props.player)
     const { firstname, lastname, image, jersey, position } = this.props.player;
     return (
       <Modal size="tiny" open={this.props.open} onClose={this.props.close}>
