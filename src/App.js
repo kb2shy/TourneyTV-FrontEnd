@@ -11,6 +11,7 @@ import LoginContainer from './containers/LoginContainer';
 import SignupContainer from './containers/SignupContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
+const LOGIN_URL = 'http://localhost:3000/login';
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
 export default class App extends Component {
@@ -102,7 +103,7 @@ export default class App extends Component {
       case "allplayers":
         return <PlayersContainer />
       case "login":
-        return <LoginContainer />
+        return <LoginContainer loginPlayer={this.loginPlayer}/>
       case "signup":
         return <SignupContainer />
       default:
@@ -112,6 +113,18 @@ export default class App extends Component {
 
   close = () => {
     this.setState({open: false})
+  }
+
+  loginPlayer = (loginCred) => {
+    fetch(LOGIN_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({player: loginCred})
+    })
+    .then(res => res.json())
+    .then(data => this.setState({current_user: data, isLoggedIn: true, displayThis: ""}))
   }
 
   render() {

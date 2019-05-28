@@ -5,15 +5,11 @@ import Login from '../components/Login'
 
 export default class LoginContainer extends Component {
 
-  state = {
-    player: {}
-  }
-
   render(){
     return(
       <Segment inverted color='green'>
         <Image src="/images/vbsignup.png" centered size='medium'/>
-        <Login />
+        <Login loginPlayer={this.props.loginPlayer}/>
       </Segment>
     )
   }
