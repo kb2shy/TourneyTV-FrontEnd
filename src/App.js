@@ -7,18 +7,7 @@ import ScoreKeepGameContainer from './containers/ScoreKeepGameContainer';
 import GamesContainer from './containers/GamesContainer';
 import TeamsContainer from './containers/TeamsContainer';
 import PlayersContainer from './containers/PlayersContainer';
-
-//image assets
-// import vblogo1 from './assets/vblogo1.jpg';
-// import vblogo2 from './assets/vblogo2.png';
-// import vblogo3 from './assets/vblogo3.png';
-// import vblogo4 from './assets/vblogo4.png';
-// import vblogo5 from './assets/vblogo5.png';
-// import vblogo6 from './assets/vblogo6.png';
-// import heroes from './assets/heroes.gif';
-// import villains from './assets/villains.gif';
-// import team3 from './assets/team3.png';
-// import team4 from './assets/team4.png';
+import SignupContainer from './containers/SignupContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const WEBSOCKET = 'ws://localhost:3000/cable';
@@ -109,6 +98,8 @@ export default class App extends Component {
         return <TeamsContainer />
       case "allplayers":
         return <PlayersContainer />
+      case "signup":
+        return <SignupContainer />
       default:
         return <Image src="/images/vblogo4.png" style={{marginTop: "3px"}} centered />;
     }
@@ -140,4 +131,3 @@ export default class App extends Component {
     )
   }
 }
-// {this.state.game.id ? <ScoreKeepGameContainer game={this.state.game} updateScore={this.updateScore}/> : null}

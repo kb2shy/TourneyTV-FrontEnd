@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Segment, Grid, Divider } from 'semantic-ui-react';
+
 import ScoreKeepGame from '../components/ScoreKeepGame'
 
 export default class ScoreKeepGameContainer extends Component {

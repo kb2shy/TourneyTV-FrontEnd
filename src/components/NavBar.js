@@ -30,14 +30,13 @@ export default class NavBar extends Component {
           className="float right"
           name='account'
           // active={activeItem === 'account'}
-          onClick={this.handleItemClick}
+          onClick={() => console.log("account on navbar clicked")}
           disable="true"
         />
         <Menu.Item
           name='sign up'
           // active={activeItem === 'sign up'}
-          onClick={this.handleItemClick}
-          disable="true"
+          onClick={() => this.props.setDisplayState("signup")}
         />
       </Menu>
     )
