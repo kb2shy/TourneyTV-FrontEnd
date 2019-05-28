@@ -12,6 +12,7 @@ import SignupContainer from './containers/SignupContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const LOGIN_URL = 'http://localhost:3000/login';
+const CREATE_ACCOUNT_URL = 'http://localhost:3000/players'
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
 export default class App extends Component {
@@ -105,7 +106,7 @@ export default class App extends Component {
       case "login":
         return <LoginContainer loginPlayer={this.loginPlayer}/>
       case "signup":
-        return <SignupContainer />
+        return <SignupContainer createPlayer={this.createPlayer}/>
       default:
         return <Image src="/images/vblogo4.png" style={{marginTop: "3px"}} centered />;
     }
@@ -127,10 +128,22 @@ export default class App extends Component {
     .then(data => this.setState({current_user: data, isLoggedIn: true, displayThis: ""}))
   }
 
+  createPlayer = (playerCred) => {
+    fetch(CREATE_ACCOUNT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({player: playerCred})
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
+
   render() {
     return (
       <Container>
-        <MenuContainer setDisplayState={this.setDisplayState}/>
+        <MenuContainer setDisplayState={this.setDisplayState} isLoggedIn={this.state.isLoggedIn}/>
         {this.getDisplay()}
         <Modal open={this.state.open} onClose={this.close} centered>
           <Header as='h1' textAlign='center'>

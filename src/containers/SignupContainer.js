@@ -5,15 +5,11 @@ import Signup from '../components/Signup'
 
 export default class SignupContainer extends Component {
 
-  state = {
-    player: {},
-  }
-
   render(){
     return(
       <Segment inverted color='green'>
         <Image src="/images/vbsignup.png" centered size='medium'/>
-        <Signup />
+        <Signup createPlayer={this.props.createPlayer}/>
       </Segment>
     )
   }

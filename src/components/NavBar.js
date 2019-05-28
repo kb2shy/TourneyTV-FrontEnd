@@ -28,13 +28,13 @@ export default class NavBar extends Component {
         />
         <Menu.Item
           className="float right"
-          name='Log in'
+          name={this.props.isLoggedIn ? "Account" : "Log In"}
           // active={activeItem === 'account'}
           onClick={() => this.props.setDisplayState("login")}
           disable="true"
         />
         <Menu.Item
-          name='sign up'
+          name={this.props.isLoggedIn ? "Log out" : "Sign up"}
           // active={activeItem === 'sign up'}
           onClick={() => this.props.setDisplayState("signup")}
         />

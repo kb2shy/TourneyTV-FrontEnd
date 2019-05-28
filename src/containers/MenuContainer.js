@@ -10,7 +10,7 @@ export default class MenuContainer extends Component {
     return (
       <Container>
         <Segment color='green' inverted>
-          <NavBar setDisplayState={this.props.setDisplayState}/>
+          <NavBar setDisplayState={this.props.setDisplayState} isLoggedIn={this.props.isLoggedIn}/>
         </Segment>
       </Container>
     )
