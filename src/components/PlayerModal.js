@@ -5,7 +5,7 @@ export default class PlayerModal extends Component {
 
   render(){
     console.log(this.props.player)
-    const { firstname, lastname, image, jersey, position, team } = this.props.player;
+    const { firstname, lastname, image, jersey, position } = this.props.player;
     return (
       <Modal size="tiny" open={this.props.open} onClose={this.props.close}>
         <Modal.Header>{firstname + " " + lastname}</Modal.Header>
@@ -17,7 +17,6 @@ export default class PlayerModal extends Component {
                   <Image src={image}/>
                 </Grid.Column>
                 <Grid.Column width={8}>
-                  Team: {team.name} <br />
                   Position: {position} <br />
                   Jersey Number: {jersey} <br />
                 </Grid.Column>
