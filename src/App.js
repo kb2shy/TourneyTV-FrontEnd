@@ -140,10 +140,21 @@ export default class App extends Component {
     .then(data => console.log(data))
   }
 
+  logout = () => {
+    console.log("logout pressed")
+    debugger
+    this.setState({ current_user: {}, isLoggedIn: false, displayThis: ""})
+  }
+
   render() {
     return (
       <Container>
-        <MenuContainer setDisplayState={this.setDisplayState} isLoggedIn={this.state.isLoggedIn}/>
+        <MenuContainer
+          setDisplayState={this.setDisplayState}
+          isLoggedIn={this.state.isLoggedIn}
+          logout={this.logout}
+          current_user={this.state.current_user}
+        />
         {this.getDisplay()}
         <Modal open={this.state.open} onClose={this.close} centered>
           <Header as='h1' textAlign='center'>

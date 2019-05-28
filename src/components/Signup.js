@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Form } from 'semantic-ui-react';
+import { Container, Form } from 'semantic-ui-react';
 
 export default class Signup extends Component {
 
@@ -25,27 +25,27 @@ export default class Signup extends Component {
     const { username, password } = this.state;
     return(
       <Container style={{display: "flex", justifyContent: "center"}}>
-      <Form inverted onSubmit={this.handleSubmit}>
-        <Form.Group>
-          <Form.Input
-            label="User name"
-            placeholder="User name"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            type="password"
-            label="Password"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Checkbox label="I agree to the Terms and Conditions"/>
-        <Form.Button content="Sign up" />
-      </Form>
+        <Form inverted onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Input
+              label="User name"
+              placeholder="User name"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
+            <Form.Input
+              type="password"
+              label="Password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Checkbox label="I agree to the Terms and Conditions"/>
+          <Form.Button content="Sign up" />
+        </Form>
       </Container>
     )
   }
