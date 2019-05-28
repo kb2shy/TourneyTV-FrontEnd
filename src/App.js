@@ -13,7 +13,7 @@ import AccountContainer from './containers/AccountContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const LOGIN_URL = 'http://localhost:3000/login';
-const CREATE_ACCOUNT_URL = 'http://localhost:3000/players'
+const PLAYERS_URL = 'http://localhost:3000/players'
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
 export default class App extends Component {
@@ -133,7 +133,7 @@ export default class App extends Component {
   }
 
   createPlayer = (playerCred) => {
-    fetch(CREATE_ACCOUNT_URL, {
+    fetch(PLAYERS_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -154,6 +154,17 @@ export default class App extends Component {
 
   dismissMessage = () => {
     this.setState({visible: false})
+  }
+
+  updateProfile = (player) => {
+    fetch(PLAYERS_URL, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ player })
+    })
+    .then(res => res.json())
   }
 
   render() {

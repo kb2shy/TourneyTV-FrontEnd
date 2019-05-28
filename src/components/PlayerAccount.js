@@ -5,7 +5,8 @@ export default class PlayerAccount extends Component {
 
   render(){
     console.log(this.props.current_user)
-    const {image, firstname, lastname, position, jersey, team} = this.props.current_user.player;
+    const {image, firstname, lastname, position, jersey,
+      team, isScoreKeeper, isTeamCaptain} = this.props.current_user.player;
 
     return (
       <Grid>
@@ -15,14 +16,15 @@ export default class PlayerAccount extends Component {
           </Grid.Column>
           <Grid.Column width={10}>
             <Header as="h1" block>{firstname} {lastname}</Header>
-            <h3>Team: {team.name}</h3>
+            <h3>Team: {team.name}   {isTeamCaptain ? "*Captain*" : null}</h3>
             <h3>Position: {position}</h3>
             <h3>Jersey: {jersey}</h3>
+            <h3>Score Keeper status: {isScoreKeeper}</h3>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column >
-            <Button.Group floated="right">
+            <Button.Group floated="right" onClick={(data) => this.props.updateProfile(this.props.current_user)}>
               <Button color="yellow">
                 Update
               </Button>
