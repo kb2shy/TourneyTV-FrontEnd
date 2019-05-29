@@ -13,7 +13,7 @@ import AccountContainer from './containers/AccountContainer';
 
 const GAMES_URL = 'http://localhost:3000/games/';
 const LOGIN_URL = 'http://localhost:3000/login';
-const PLAYERS_URL = 'http://localhost:3000/players'
+const PLAYERS_URL = 'http://localhost:3000/players';
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
 export default class App extends Component {
