@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Grid, Image, Segment, Header } from 'semantic-ui-react';
+import { Button, Grid, Image, Header } from 'semantic-ui-react';
 
 export default class PlayerAccount extends Component {
 
   render(){
-    console.log(this.props.current_user)
     const {image, firstname, lastname, position, jersey,
-      team, isScoreKeeper, isTeamCaptain} = this.props.current_user.player;
+      team, isScoreKeeper, isTeamCaptain} = this.props.current_user;
 
     return (
       <Grid>
@@ -24,7 +23,7 @@ export default class PlayerAccount extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column >
-            <Button.Group floated="right" onClick={(data) => this.props.updateProfile(this.props.current_user)}>
+            <Button.Group floated="right" onClick={() => this.props.setDisplay()}>
               <Button color="yellow">
                 Update
               </Button>
