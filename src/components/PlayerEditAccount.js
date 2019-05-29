@@ -56,8 +56,9 @@ export default class PlayerEditAccount extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    const player = this.state.player
+    e.preventDefault();
+    const player = this.state.player;
+    const team = player["team"];
     delete player["team"];
 
     fetch(PLAYERS_URL + player.id, {
@@ -70,13 +71,14 @@ export default class PlayerEditAccount extends Component {
     })
     .then(res => res.json())
     // .then(data => this.props.updateCurrentUser(data))
+    this.props.setDisplay('');
+    player.team = team;
+    this.props.updateProfile(player);
   }
 
   render(){
     const {image, firstname, lastname, position, jersey,
       team, isScoreKeeper, isTeamCaptain} = this.state.player;
-
-    console.log(team)
 
     return (
       <Grid>

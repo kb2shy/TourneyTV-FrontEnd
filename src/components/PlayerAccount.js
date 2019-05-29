@@ -6,7 +6,7 @@ export default class PlayerAccount extends Component {
   render(){
     const {image, firstname, lastname, position, jersey,
       team, isScoreKeeper, isTeamCaptain} = this.props.current_user;
-
+    console.log(this.props.current_user)
     return (
       <Grid>
         <Grid.Row>
@@ -23,7 +23,7 @@ export default class PlayerAccount extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column >
-            <Button.Group floated="right" onClick={() => this.props.setDisplay()}>
+            <Button.Group floated="right" onClick={() => this.props.setDisplay('edit')}>
               <Button color="yellow">
                 Update
               </Button>
