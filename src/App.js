@@ -133,7 +133,7 @@ export default class App extends Component {
       body: JSON.stringify({player: loginCred})
     })
     .then(res => res.json())
-    .then(data => this.setState({current_user: data, isLoggedIn: true, displayThis: ""}))
+    .then(data => this.setState({ current_user: data, isLoggedIn: true}))
   }
 
   createPlayer = (playerCred) => {

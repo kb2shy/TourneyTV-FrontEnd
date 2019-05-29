@@ -106,7 +106,7 @@ export default class PlayerEditAccount extends Component {
                   />
                 </Form.Group>
               </Header>
-              <h3>Team: {team.name}   {isTeamCaptain ? "*Captain*" : null}</h3>
+              <h3>Team: {!team ?  "Not on a team": team.name}   {isTeamCaptain ? "*Captain*" : null}</h3>
               <h3>Position:
                 <Dropdown
                   name="position"

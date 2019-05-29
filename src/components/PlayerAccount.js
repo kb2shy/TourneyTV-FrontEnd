@@ -15,7 +15,7 @@ export default class PlayerAccount extends Component {
           </Grid.Column>
           <Grid.Column width={10}>
             <Header as="h1" block>{firstname} {lastname}</Header>
-            <h3>Team: {team.name}   {isTeamCaptain ? "*Captain*" : null}</h3>
+            <h3>Team: {!team ?  "Not on a team": team.name}   {isTeamCaptain ? "*Captain*" : null}</h3>
             <h3>Position: {position}</h3>
             <h3>Jersey: {jersey}</h3>
             <h3>Score Keeper status: {isScoreKeeper}</h3>

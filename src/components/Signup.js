@@ -18,6 +18,7 @@ export default class Signup extends Component {
       username: this.state.username,
       password: this.state.password,
     }
+    console.log()
     this.props.createPlayer(player)
   }
 
