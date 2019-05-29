@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Grid, Image, Form, Dropdown, Checkbox,
   Header} from 'semantic-ui-react';
 
+const PLAYERS_URL = 'http://localhost:3000/players/';
+
 const POSITIONS = [
   {
     key: "Setter",
@@ -56,7 +58,20 @@ export default class PlayerEditAccount extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const player = this.state.player
-    console.log("save button pushed in PlayerEditAccount", player)
+    delete player["team"];
+    console.log("save button pushed and player will be sent to", player)
+
+
+    fetch(PLAYERS_URL + player.id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.props.current_user.jwt}`
+      },
+      body: JSON.stringify({player})
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   render(){
@@ -127,7 +142,7 @@ export default class PlayerEditAccount extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column >
-            <Button color="blue" floated="right">
+            <Button color="blue" floated="right" onClick={this.handleSubmit}>
               Save
             </Button>
           </Grid.Column>
