@@ -100,7 +100,11 @@ export default class App extends Component {
   getDisplay = () => {
     switch (this.state.displayThis) {
       case "allgames":
-        return <GamesContainer games={this.state.games} setSingleGame={this.setSingleGame}/>;
+        return <GamesContainer
+                  games={this.state.games}
+                  setSingleGame={this.setSingleGame}
+                  current_user={this.state.current_user}
+                />;
       case "allteams":
         return <TeamsContainer />;
       case "allplayers":

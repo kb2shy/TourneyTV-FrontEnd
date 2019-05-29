@@ -59,8 +59,6 @@ export default class PlayerEditAccount extends Component {
     e.preventDefault()
     const player = this.state.player
     delete player["team"];
-    console.log("save button pushed and player will be sent to", player)
-
 
     fetch(PLAYERS_URL + player.id, {
       method: "PATCH",
@@ -71,12 +69,14 @@ export default class PlayerEditAccount extends Component {
       body: JSON.stringify({player})
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    // .then(data => this.props.updateCurrentUser(data))
   }
 
   render(){
     const {image, firstname, lastname, position, jersey,
       team, isScoreKeeper, isTeamCaptain} = this.state.player;
+
+    console.log(team)
 
     return (
       <Grid>
