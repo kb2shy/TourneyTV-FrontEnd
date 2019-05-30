@@ -11,10 +11,10 @@ import LoginContainer from './containers/LoginContainer';
 import SignupContainer from './containers/SignupContainer';
 import AccountContainer from './containers/AccountContainer';
 
-const GAMES_URL = 'http://localhost:3000/games/';
-const LOGIN_URL = 'http://localhost:3000/login';
-const PLAYERS_URL = 'http://localhost:3000/players';
-const WEBSOCKET = 'ws://localhost:3000/cable';
+const GAMES_URL = 'https://powerful-woodland-71941.herokuapp.com/games/';
+const LOGIN_URL = 'https://powerful-woodland-71941.herokuapp.com/login';
+const PLAYERS_URL = 'https://powerful-woodland-71941.herokuapp.com/players';
+const WEBSOCKET = 'wss://powerful-woodland-71941.herokuapp.com/cable';
 
 const HOMEPAGE = (
   <Container style={{backgroundColor: "#23b036", marginTop: "14px"}}>
