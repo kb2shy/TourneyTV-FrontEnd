@@ -16,6 +16,14 @@ const LOGIN_URL = 'http://localhost:3000/login';
 const PLAYERS_URL = 'http://localhost:3000/players';
 const WEBSOCKET = 'ws://localhost:3000/cable';
 
+const HOMEPAGE = (
+  <Container style={{backgroundColor: "#23b036", marginTop: "14px"}}>
+    <Image src="/images/vblogo8.png" size="large" centered />
+    <Image src="/images/vblogo6.png" size="large" centered />
+    <Image src="/images/vbsignup.png" size="large" centered />
+  </Container>
+)
+
 export default class App extends Component {
 
   constructor() {
@@ -117,7 +125,7 @@ export default class App extends Component {
       case "account":
         return <AccountContainer current_user={this.state.current_user} deletePlayer={this.deletePlayer}/>;
       default:
-        return <Image src="/images/vblogo4.png" style={{marginTop: "3px"}} centered />;
+        return HOMEPAGE;
     }
   }
 

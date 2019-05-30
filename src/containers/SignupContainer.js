@@ -8,7 +8,7 @@ export default class SignupContainer extends Component {
   render(){
     return(
       <Segment inverted color='green'>
-        <Image src="/images/vbsignup.png" centered size='medium'/>
+        <Image src="/images/vbball.png" centered size='medium'/>
         <Signup createPlayer={this.props.createPlayer}/>
       </Segment>
     )
