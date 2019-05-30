@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, Image, Header } from 'semantic-ui-react';
+import { Button, Grid, Image, Header, Confirm } from 'semantic-ui-react';
 
 export default class PlayerAccount extends Component {
 
@@ -27,13 +27,14 @@ export default class PlayerAccount extends Component {
                 Update
               </Button>
               <Button.Or />
-              <Button  color="red" onClick={() => this.props.deletePlayer(this.props.current_user)}>
+              <Button color="red" onClick={() => this.props.deletePlayer(this.props.current_user)}>
                 Delete
               </Button>
             </Button.Group>
           </Grid.Column>
         </Grid.Row>
       </Grid>
+
     )
   }
 }
