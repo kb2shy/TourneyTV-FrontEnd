@@ -35,6 +35,7 @@ export default class AccountContainer extends Component {
       return <PlayerAccount
         current_user={this.props.current_user.player}
         setDisplay={this.setDisplay}
+        deletePlayer={this.props.deletePlayer}
       />;
     }
   }

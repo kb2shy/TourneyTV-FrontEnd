@@ -114,7 +114,7 @@ export default class App extends Component {
       case "signup":
         return <SignupContainer createPlayer={this.createPlayer}/>;
       case "account":
-        return <AccountContainer current_user={this.state.current_user} />;
+        return <AccountContainer current_user={this.state.current_user} deletePlayer={this.deletePlayer}/>;
       default:
         return <Image src="/images/vblogo4.png" style={{marginTop: "3px"}} centered />;
     }
@@ -145,8 +145,25 @@ export default class App extends Component {
       body: JSON.stringify({player: playerCred})
     })
     .then(res => res.json())
+    .then(data => this.setState({ current_user: data, isLoggedIn: true}))
+  }
+
+  deletePlayer = (player) => {
+    console.log("in deletePlayer", player);
+    // debugger;
+    fetch(PLAYERS_URL + `/${player.id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.state.current_user.jwt}`
+      },
+      body: JSON.stringify({player})
+    })
+    .then(res => res.json())
     .then(data => console.log(data))
   }
+
+// this.setState({ current_user: {}, isLoggedIn: false, displayThis: ''})
 
   logout = () => {
     this.setState({ current_user: {}, isLoggedIn: false, displayThis: ""})

@@ -6,7 +6,6 @@ export default class PlayerAccount extends Component {
   render(){
     const {image, firstname, lastname, position, jersey,
       team, isScoreKeeper, isTeamCaptain} = this.props.current_user;
-    console.log(this.props.current_user)
     return (
       <Grid>
         <Grid.Row>
@@ -28,7 +27,7 @@ export default class PlayerAccount extends Component {
                 Update
               </Button>
               <Button.Or />
-              <Button  color="red">
+              <Button  color="red" onClick={() => this.props.deletePlayer(this.props.current_user)}>
                 Delete
               </Button>
             </Button.Group>
