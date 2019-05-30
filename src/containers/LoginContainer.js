@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Segment, Image } from 'semantic-ui-react';
 
-import Signup from '../components/Signup'
+import Login from '../components/Login'
 
-export default class SignupContainer extends Component {
+export default class LoginContainer extends Component {
 
   render(){
     return(
       <Segment inverted color='green'>
         <Image src="/images/vbball.png" centered size='medium'/>
-        <Signup createPlayer={this.props.createPlayer}/>
+        <Login loginPlayer={this.props.loginPlayer} setLoginMessage={this.props.setLoginMessage}/>
       </Segment>
     )
   }

@@ -22,7 +22,14 @@ export default class GamesContainer extends Component {
     return(
       <Segment placeholder>
         <Card.Group itemsPerRow={3}>
-          {games.map((game, index) => (<GameCard key={index} game={game} setSingleGame={setSingleGame}/>))}
+          {games.map((game, index) => (
+            <GameCard
+              key={index}
+              game={game}
+              setSingleGame={setSingleGame}
+              current_user={this.props.current_user}
+            />
+          ))}
         </Card.Group>
       </Segment>
     )

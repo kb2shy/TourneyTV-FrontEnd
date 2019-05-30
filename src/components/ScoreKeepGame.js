@@ -6,7 +6,7 @@ export default class ScoreKeepGame extends Component {
   render() {
     const { score, minusScore, addScore, team} = this.props
     return(
-      <Card centered placeholder>
+      <Card centered>
         <Image src={"/images/" + team.image} style={{height: "110px"}}/>
         <Card.Content textAlign='center'>
           <Card.Header >Team: {team.name}</Card.Header>

@@ -12,7 +12,7 @@ export default class ScoreKeepGameContainer extends Component {
       <Segment placeholder>
         <Grid centered>
           <Grid.Row centered columns={2}>
-            <Grid.Column centered>
+            <Grid.Column>
             <ScoreKeepGame
               team={teams[0]}
               score={team1score}

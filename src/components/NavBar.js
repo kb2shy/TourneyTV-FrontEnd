@@ -3,6 +3,23 @@ import { Menu } from 'semantic-ui-react';
 
 export default class NavBar extends Component {
 
+  loginAccount = (isLoggedIn, current_user) => {
+    if (this.props.isLoggedIn) {
+      return <Menu.Item className="float right" name={current_user.player.firstname + "'s Account"}
+        onClick={() => this.props.setDisplayState("account")} />
+    } else {
+      return <Menu.Item className="float right" name='Log in' onClick={() => this.props.setDisplayState("login")} />
+    }
+  }
+
+  signupLogout = (isLoggedIn) => {
+    if (this.props.isLoggedIn) {
+      return <Menu.Item name='Log out' onClick={() => this.props.logout()} />
+    } else {
+      return <Menu.Item name='Sign up' onClick={() => this.props.setDisplayState("signup")} />
+    }
+  }
+
   render() {
     return (
       <Menu inverted color='green' secondary>
@@ -26,18 +43,8 @@ export default class NavBar extends Component {
           // active={activeItem === 'players'}
           onClick={() => this.props.setDisplayState("allplayers")}
         />
-        <Menu.Item
-          className="float right"
-          name='account'
-          // active={activeItem === 'account'}
-          onClick={() => console.log("account on navbar clicked")}
-          disable="true"
-        />
-        <Menu.Item
-          name='sign up'
-          // active={activeItem === 'sign up'}
-          onClick={() => this.props.setDisplayState("signup")}
-        />
+        {this.loginAccount(this.props.isLoggedIn, this.props.current_user)}
+        {this.signupLogout(this.props.isLoggedIn)}
       </Menu>
     )
   }
