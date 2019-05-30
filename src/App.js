@@ -27,7 +27,8 @@ export default class App extends Component {
       open: false,
       current_user: {},
       isLoggedIn: false,
-      visible: false,
+      loginMessage: false,
+      deleteMessage: false,
     }
   }
 
@@ -149,8 +150,6 @@ export default class App extends Component {
   }
 
   deletePlayer = (player) => {
-    console.log(player)
-    debugger
     fetch(PLAYERS_URL + `/${player.id}`, {
       method: 'DELETE',
       headers: {
@@ -160,8 +159,7 @@ export default class App extends Component {
       body: JSON.stringify({player})
     })
     .then(res => res.json())
-    debugger
-    this.setState({ current_user: {}, isLoggedIn: false, displayThis: ''})
+    this.setState({ current_user: {}, isLoggedIn: false, displayThis: '', deleteMessage: true})
   }
 
   logout = () => {
@@ -169,11 +167,11 @@ export default class App extends Component {
   }
 
   setLoginMessage = () => {
-    this.setState({visible: true})
+    this.setState({loginMessage: true})
   }
 
   dismissMessage = () => {
-    this.setState({visible: false})
+    this.setState({loginMessage: false, deleteMessage: false})
   }
 
   updateProfile = (player) => {
@@ -196,10 +194,16 @@ export default class App extends Component {
           logout={this.logout}
           current_user={this.state.current_user}
         />
-        {this.state.visible ?
+        {this.state.loginMessage ?
           <Message
             success header='Log in successful'
-            content="Welcome to Volleyball Tournament Management Systems"
+            content="Welcome to TourneyTV"
+            onDismiss={this.dismissMessage}
+          /> : null}
+        {this.state.deleteMessage ?
+          <Message
+            negative header='Account Deleted'
+            content="Your account no longer exists."
             onDismiss={this.dismissMessage}
           /> : null}
         {this.getDisplay()}
