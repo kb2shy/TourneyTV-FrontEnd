@@ -149,8 +149,6 @@ export default class App extends Component {
   }
 
   deletePlayer = (player) => {
-    console.log("in deletePlayer", player);
-    // debugger;
     fetch(PLAYERS_URL + `/${player.id}`, {
       method: 'DELETE',
       headers: {
@@ -160,10 +158,8 @@ export default class App extends Component {
       body: JSON.stringify({player})
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.setState({ current_user: {}, isLoggedIn: false, displayThis: ''}))
   }
-
-// this.setState({ current_user: {}, isLoggedIn: false, displayThis: ''})
 
   logout = () => {
     this.setState({ current_user: {}, isLoggedIn: false, displayThis: ""})

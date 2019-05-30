@@ -35,7 +35,7 @@ export default class PlayersContainer extends Component {
     return(
       <Container style={{marginTop: "5px"}}>
         <Header as='h1' textAlign='center'>Registered Players</Header>
-        <Segment>
+        <Segment placeholder>
           <Card.Group itemsPerRow={4} centered>
             {players.map((player, index) =>
               <PlayerCard
