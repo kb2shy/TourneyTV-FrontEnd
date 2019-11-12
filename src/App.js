@@ -11,10 +11,10 @@ import LoginContainer from './containers/LoginContainer';
 import SignupContainer from './containers/SignupContainer';
 import AccountContainer from './containers/AccountContainer';
 
-const GAMES_URL = 'https://powerful-woodland-71941.herokuapp.com/games/';
-const LOGIN_URL = 'https://powerful-woodland-71941.herokuapp.com/login';
-const PLAYERS_URL = 'https://powerful-woodland-71941.herokuapp.com/players';
-const WEBSOCKET = 'wss://powerful-woodland-71941.herokuapp.com/cable';
+const GAMES_URL = 'http://localhost:3000/games/';
+const LOGIN_URL = 'http://localhost:3000/login';
+const PLAYERS_URL = 'http://localhost:3000/players';
+const WEBSOCKET = 'ws://localhost:3000/cable';
 
 const HOMEPAGE = (
   <Container style={{backgroundColor: "#23b036", marginTop: "14px"}}>
@@ -77,9 +77,10 @@ export default class App extends Component {
   // subtract game scores for team1 and team2
   minusScore = (team) => {
     let updateGame = this.state.game;
-    if (team.name === this.state.game.teams[0].name) {
+
+    if (team.name === this.state.game.teams[0].name && this.state.game.team1score > 0) {
       updateGame["team1score"] = this.state.game.team1score - 1;
-    } else {
+    } else if (team.name === this.state.game.teams[1].name && this.state.game.team2score > 0) {
       updateGame["team2score"] = this.state.game.team2score - 1;
     }
     this.setState({ updateGame });
@@ -134,15 +135,21 @@ export default class App extends Component {
   }
 
   loginPlayer = (loginCred) => {
-    fetch(LOGIN_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({player: loginCred})
-    })
-    .then(res => res.json())
-    .then(data => this.setState({ current_user: data, isLoggedIn: true}))
+    if (loginCred.username === "" || loginCred.password === "") {
+      alert("Please enter a username and/or password");
+      this.setState( { loginMessage: false });
+      return;
+    } else {
+      fetch(LOGIN_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({player: loginCred})
+      })
+      .then(res => res.json())
+      .then(data => this.setState({ current_user: data, isLoggedIn: true, displayThis: ''}))
+    }
   }
 
   createPlayer = (playerCred) => {
@@ -194,6 +201,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <Container>
         <MenuContainer

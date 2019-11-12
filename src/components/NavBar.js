@@ -5,7 +5,7 @@ export default class NavBar extends Component {
 
   loginAccount = (isLoggedIn, current_user) => {
     if (this.props.isLoggedIn) {
-      return <Menu.Item className="float right" name={current_user.player.firstname + "'s Account"}
+      return <Menu.Item className="float right" name={current_user.player.firstname + " Account"}
         onClick={() => this.props.setDisplayState("account")} />
     } else {
       return <Menu.Item className="float right" name='Log in' onClick={() => this.props.setDisplayState("login")} />

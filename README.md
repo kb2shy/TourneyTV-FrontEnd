@@ -1,69 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tourney TV
+### Full Stack Web Application designed and developed by [Chhaian Pin](http://chhaianpin.herokuapp.com)
 
-## Available Scripts
+## Premise
+Minimal viable product of a full-stack volleyball tournament web application
+that allows volleyball tournament managers to schedule volleyball games,
+organize tournament details, and manage the logistics and information of the
+tournament event. Users are able to register a profile, update their player
+information, and if authorized, allowed to keep track of active game scores.
+This web application helps administer a volleyball tournament from a central
+location and allows users the ability to update and inform changing content in
+real time.
 
-In the project directory, you can run:
+## How to use
+* Run PostgreSQL database on local drive to generate own data.
+* Clone [TourneyTV-BackEnd](https://github.com/kb2shy/TourneyTV-BackEnd)
+repository onto local drive.
+* Run 'rails s'. This will run on 'localhost:3000'.
+* Clone [TourneyTV-FrontEnd](https://github.com/kb2shy/TourneyTV-FrontEnd)
+repository onto local drive.
+* Run 'npm start'. This should run on 'localhost:3001'.
 
-### `npm start`
+## Use cases
+* Register, edit, and delete player profile
+* View and edit game scores
+* View player and team profiles
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Video Demo
+[Project Demo: Tourney TV](https://youtu.be/sbjP9xrQZOY)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Future Features
+* Allow tournament administrators to create game schedules
+* When players register, they must finish updating their player profile
+* Users can upload photos and videos
+* Users can chat or post messages on the platform
 
-### `npm test`
+## Project status
+Currently a minimal viable product and sample demo of proficiencies with
+React, Ruby on Rails, JavaScript, Semantic UI, HTML, CSS, and PostgreSQL.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# vbtourney2-frontend
+## License
+All rights reserved.
